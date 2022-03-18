@@ -1,0 +1,95 @@
+.icon-view {
+    height: 100%;
+
+    .mat-drawer {
+        align-items: stretch !important;
+    }
+
+    .left-widgets {
+        flex: 1;
+        width: 4vw;
+        margin: 15px 0;
+        margin-bottom: 50px;
+        padding-right: 10px;
+        position: relative;
+        overflow: hidden;
+        .widget {
+            padding: 0 !important;
+        }
+    }
+
+    @media (max-width: 960px) {
+        .left-widgets {
+            width: 5vw;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .left-widgets {
+            width: 6vw;
+        }
+    }
+
+    app-draggable-icons[position="bottom"] {
+        width: 250px;
+        bottom: 75px;
+        top: auto;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        position: absolute;
+        margin: 0;
+
+        ::ng-deep.widget  {
+            margin: 0 auto;
+            width: 250px;
+            height: 150px;
+
+            &.spacer  {
+                height: 0;
+            }
+
+            .widget-content {
+                height: 150px;
+            }
+        }
+    }
+
+    ::ng-deep .widget-header .actions-icons {
+        right: 0 !important;
+    }
+}
+
+.widgets-list {
+    display: flex;
+    flex-flow: row wrap;
+
+    .widgets-list-item {
+        flex: 1;
+        margin: 10px;
+
+        position: relative;
+
+        .widget-settings-wrapper {
+            transform: translateY(0px);
+        }
+    }
+}
+
+.widgets-list-item {
+    position: relative;
+
+    .widget-settings-wrapper {
+        transform: translateY(0px);
+    }
+}
+
+::ng-deep .mat-menu-panel.popover {
+    margin: 20px;
+}
+
+.todo-widget {
+    position: absolute;
+    bottom: 2vh;
+    left: 1vw;
+}

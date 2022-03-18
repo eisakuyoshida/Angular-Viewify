@@ -1,0 +1,93 @@
+@import "../../../../../../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../../../../../../node_modules/flatpickr/dist/flatpickr.css";
+
+.modal-content {
+  color: black;
+}
+.mat-button {
+    min-width: 25px;
+    width: 25px;
+    padding: 0;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+.mat-button:focus,
+button:focus {
+    background-color: transparent !important;
+    outline: unset !important;
+}
+
+.calendar-wrapper {
+    // .cal-month-view .cal-cell-row cal-header {
+    //     height: 30px;
+    // }
+
+    // .cal-month-view .cal-cell-row {
+    //     height: 50px;
+    // }
+
+    // .cal-month-view .cal-day-cell {
+    //     min-height: 0px;
+    // }
+    .cal-month-view .cal-day-number {
+        font-size: 16px;
+        font-weight: 400;
+        opacity: 1;
+        margin-top: 15px;
+        margin-right: 15px;
+        float: right;
+        margin-bottom: 10px;
+    }
+    .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+        opacity: 0.2;
+        cursor: default;
+    }    
+    .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+        color: #eec46aea;
+    }    
+    .cal-month-view .cal-day-cell.cal-today .cal-day-number {
+         font-size: 16px !important; 
+    }
+    .cal-month-view .cal-day-cell.cal-today {
+        background-color: #474d56;
+    }    
+    .cal-month-view .cal-cell-row:hover {
+        background-color: transparent !important;
+        outline: unset !important;
+    }
+    .cal-month-view .cal-cell-row .cal-cell:hover,
+    .cal-month-view .cal-cell.cal-has-events.cal-open {
+        // background-color: #ededed; 
+        background: #8BE !important;
+        outline: unset !important;
+    }
+    .cal-month-view .cal-days {
+        border: 2px solid #444141;
+        border-bottom: 0;
+        border-radius: 0px 0px 17px 17px;
+    }
+    .cal-month-view .cal-day-cell:not(:last-child) {
+        border-right: 2px solid #444141;
+    }
+    .cal-month-view .cal-days .cal-cell-row {
+        border-bottom: 2px solid #444141;
+    }   
+    .cal-month-view .cal-cell-top {
+        min-height: 100%;
+        flex: 1;
+    }         
+    .cal-week-view .cal-header.cal-today {
+      background-color: #6b99a0;
+    }
+    .cal-week-view .cal-hour-odd {
+        background-color: #2e2e2e; 
+    }
+    .cal-day-view .cal-hour:nth-child(odd) {
+      background-color: #2e2e2e; 
+  }    
+
+}
+
+
+

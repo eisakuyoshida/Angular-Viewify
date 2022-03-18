@@ -1,0 +1,10 @@
+.full-wrapper {
+    position: relative;
+    min-height: 400px;
+
+    .iframe-wrapper {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+    }
+}

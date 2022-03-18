@@ -1,0 +1,69 @@
+{
+    "manifest_version": 2,
+    "name": "Viewify",
+    "short_name": "Viewify",
+    "version": "0.0.1",
+    "description": "Viewify",
+    "icons": {
+        "16": "assets/images/logo16.png",
+        "48": "assets/images/logo48.png",
+        "128": "assets/images/logo128.png"
+    },
+    "browser_action": {
+        "default_icon": "assets/images/logo48.png",
+        "default_popup": "popup.html"
+    },
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "css": [ "assets/inject/css/gmail.css" ],
+            "matches": [ "https://mail.google.com/*" ]
+        }, {
+            "all_frames": true,
+            "js": [ "assets/inject/js/facebook.js" ],
+            "matches": [ "https://m.facebook.com/*" ],
+            "run_at": "document_start"
+        }
+    ],
+    
+    "oauth2": {
+        "client_id": "991346621443-5a7gge8fh4gc793dm2bjglb584r9q56v.apps.googleusercontent.com",
+        "scopes": [
+          "https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/userinfo.profile"
+        ]
+      },
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://apis.google.com; object-src 'self'",
+    "background": {
+        "scripts": []
+      },
+
+    "homepage_url": "https://www.salesplanet.com/amzplanet/",
+    "web_accessible_resources": [
+        "assets/*"
+    ],
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "activeTab",
+        "webRequest",
+        "<all_urls>",
+        "tabs",
+        "identity", 
+        "http://*.facebook.com/*",
+        "https://mail.google.com/*",
+        "https://www.googleapis.com/*",
+        "unlimitedStorage",
+        "background",
+        "storage",
+        "cookies",
+        "sessions",
+        "webRequestBlocking",
+        "bookmarks",
+        "topSites",
+        "history"
+    ]
+}

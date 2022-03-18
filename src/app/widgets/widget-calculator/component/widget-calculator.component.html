@@ -1,0 +1,71 @@
+<app-widget [type]="type"
+            [frozen]="frozen"
+            [hide]="hide"
+            [remove]="remove"
+            [minimizedSubj]="minimizedOnStart"
+            (minimizedEmiter)="onMinimize($event)"
+            [opened]="onOpened()"
+            [showHeader]="calcService.settings.showHeader"
+            [headerName]="calcService.settings.headerName"
+            (reload)="reload()"
+            (hideWidget)="hideWidget.emit()"
+            (save)="saveSettings()">
+    <app-widget-icon>
+        <i class="fas fa-calculator"></i>
+    </app-widget-icon>
+
+    <!--<app-widget-settings-on-adding [settings]="settingsStorage" (syncSettings)="syncSettingsStorage()">
+    </app-widget-settings-on-adding>-->
+
+    <app-widget-settings>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Header</span>
+            <mat-slide-toggle [(ngModel)]="calcService.settingShowHeader"></mat-slide-toggle>
+        </div>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Name</span>
+            <mat-form-field>
+                <input matInput [(ngModel)]="calcService.settingHeaderName"
+                       autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>
+    </app-widget-settings>
+
+    <app-widget-full>
+        <div class="calculator-wrapper"> <!--popover time-popover widget-popover-->
+            <mat-card class='calculator_content'>
+                <input class='calculator_result calculator_input-data' [(ngModel)]="operation" disabled />
+                <div class="calculator_border"></div>
+                <div class='calculator_result'>{{result}}</div>
+                <div class="calculator_panel">
+                    <div class="calculator_input">
+                        <button mat-button (click)="clear()">AC</button>
+                        <button mat-button (click)="undo()">CE</button>
+                        <button mat-button (click)="append('(')">(</button>
+                        <button mat-button (click)="append(')')">)</button>
+                        <button mat-button (click)="append('7')">7</button>
+                        <button mat-button (click)="append('8')">8</button>
+                        <button mat-button (click)="append('9')">9</button>
+                        <button mat-button (click)="append('/')">/</button>
+                        <button mat-button (click)="append('4')">4</button>
+                        <button mat-button (click)="append('5')">5</button>
+                        <button mat-button (click)="append('6')">6</button>
+                        <button mat-button (click)="append('*')">X</button>
+                        <button mat-button (click)="append('1')">1</button>
+                        <button mat-button (click)="append('2')">2</button>
+                        <button mat-button (click)="append('3')">3</button>
+                        <button mat-button (click)="append('-')">-</button>
+                        <button mat-button (click)="append('0')">0</button>
+                        <button mat-button (click)="append('.')">.</button>
+                        <button mat-button (click)="evaluate()">=</button>
+                        <button mat-button (click)="append('+')">+</button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+        <!--<mat-menu #calculator="matMenu" yPosition="below" class="widget" [overlapTrigger]="false" [hasBackdrop]="false" xPosition="after">
+            <ng-container *ngTemplateOutlet="full"></ng-container>
+        </mat-menu>-->
+    </app-widget-full>
+</app-widget>

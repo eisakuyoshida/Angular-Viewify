@@ -1,0 +1,52 @@
+<app-widget
+    [type]="type"
+    [frozen]="frozen"
+    [hide]="hide"
+    [remove]="remove"
+    [minimizedSubj]="minimizedOnStart"
+    (minimizedEmiter)="onMinimize($event)"
+    [opened]="onOpened()"
+    [showHeader]="whatsappSvc.settings.showHeader"
+    [headerName]="whatsappSvc.settings.headerName"
+    (reload)="reload()"
+    (hideWidget)="hideWidget.emit()"
+    (save)="saveSettings()">
+
+    <app-widget-icon>
+        <mat-icon fontSet="fab" fontIcon="fa-whatsapp"></mat-icon>
+    </app-widget-icon>
+
+    <!--<app-widget-settings-on-adding [settings]="settingsStorage" (syncSettings)="syncSettingsStorage()">
+    </app-widget-settings-on-adding>-->
+
+    <app-widget-settings>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Header</span>
+            <mat-slide-toggle [(ngModel)]="whatsappSvc.settingShowHeader"></mat-slide-toggle>
+        </div>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Name</span>
+            <mat-form-field>
+                <input matInput [(ngModel)]="whatsappSvc.settingHeaderName"
+                       autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>
+    </app-widget-settings>
+
+    <app-widget-full>
+        <div class="whatsapp_full-wrapper full-wrapper">
+            <div class="whatsapp_iframe-wrapper">
+                <div class="whatsapp_width-toggle">
+                    <i *ngIf="!doubleWidth" class="fas fa-angle-right whatsapp_arrow" (click)="stretchWindow($event.target)"></i>
+                    <i *ngIf="doubleWidth" class="fas fa-angle-left whatsapp_arrow" (click)="stretchWindow($event.target)"></i>
+                </div>
+                <iframe
+                    src="https://web.whatsapp.com/send?"
+                    sandbox="allow-same-origin allow-popups allow-forms allow-scripts allow-top-navigation"
+                    seamless=""
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+    </app-widget-full>
+</app-widget>

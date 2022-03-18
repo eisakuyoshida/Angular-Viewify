@@ -1,0 +1,114 @@
+.widget {
+    //overflow: hidden;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+
+    &:hover {
+        .widget-settings-wrapper {
+            opacity: 1;
+        }
+    }
+
+    &.double-height {
+        height: 80px;
+    }
+
+    &.no-height {
+        height: 0px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ghost-content {
+        flex: 1;
+        margin-bottom: 10px;
+    }
+
+    .widget-content {
+        height: 40px;
+    }
+
+    .widget-settings-wrapper {
+        position: absolute;
+        right: -15px;
+        top: -3px;
+        height: 50px;
+        transition-duration: .1s;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        .mat-icon {
+            width: 22px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /*.drag-icon {
+            z-index: 999;
+            position: absolute;
+            top: 4px;
+            right: 74px;
+            color: rgba(255, 255, 255, .7);
+        }*/
+
+        .remove-icon {
+            color: rgba(255, 100, 100, .8);
+        }
+    }
+}
+
+.droppable-areas-wrapper {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 0;
+    margin-left: 4px;
+
+    &.highlighted {
+        z-index: 10;
+    }
+
+    .droppable-area-wrapper {
+        width: 100%;
+
+        .droppable-area {
+            width: 100%;
+            height: 40px;
+            padding: 1px 5px;
+            box-sizing: border-box;
+
+            .droppable-area-bg {
+                border-radius: 5px;
+                height: 38px;
+            }
+
+            &.highlighted {
+
+                .droppable-area-bg {
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    box-sizing: border-box;
+                }
+            }
+
+            &.drop-over-active {
+
+                .droppable-area-bg {
+                    background: rgba(255, 255, 255, .2);
+                }
+            }
+        }
+    }
+}

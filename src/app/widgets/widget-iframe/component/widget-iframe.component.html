@@ -1,0 +1,50 @@
+<app-widget
+    [type]="type"
+    [frozen]="frozen"
+    [hide]="hide"
+    [remove]="remove"
+    [minimizedSubj]="minimizedOnStart"
+    (minimizedEmiter)="onMinimize($event)"
+    [opened]="onOpened()"
+    [showHeader]="iframeSvc.settings.showHeader"
+    [headerName]="iframeSvc.settings.headerName"
+    (reload)="reload()"
+    (hideWidget)="hideWidget.emit()"
+    (save)="saveSettings()">
+
+    <app-widget-icon>
+        <mat-icon [fontSet]="settings.fontSet" [fontIcon]="settings.fontIcon"></mat-icon>
+    </app-widget-icon>
+
+    <!--<app-widget-settings-on-adding [settings]="settingsStorage" (syncSettings)="syncSettingsStorage()">
+    </app-widget-settings-on-adding>-->
+
+    <app-widget-settings>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Header</span>
+            <mat-slide-toggle [(ngModel)]="iframeSvc.settingShowHeader"></mat-slide-toggle>
+        </div>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Name</span>
+            <mat-form-field>
+                <input matInput [(ngModel)]="iframeSvc.settingHeaderName"
+                       autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>
+    </app-widget-settings>
+
+    <app-widget-full>
+        <div class="full-wrapper">
+            <div class="iframe-wrapper">
+                <iframe height="100%" width="100%"
+                        [src]="url"
+                        sandbox="allow-same-origin allow-popups allow-forms allow-scripts allow-top-navigation"
+                        seamless=""
+                        frameborder="0" style="border:0"
+                ></iframe>
+            </div>
+        </div>
+    </app-widget-full>
+
+    <app-widget-settings>Todo</app-widget-settings>
+</app-widget>

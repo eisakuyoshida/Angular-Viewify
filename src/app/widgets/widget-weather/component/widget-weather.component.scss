@@ -1,0 +1,184 @@
+.icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-full-wrapper {
+    min-height: 120px;
+    padding: 10px;
+    position: relative;
+    top: -10px;
+
+    .weather-address {
+        min-width: 200px;
+        min-height: 40px;
+        display: block;
+    }
+    .results-wrapper {
+        .weather-status {
+            margin: 0 8px;
+            .low-temp {
+                opacity: 0.6;
+            }
+        }
+        .day {
+            text-align: center;
+            margin-top: 5px;
+        }
+    }
+}
+.wi {
+    font-size: 30px;
+    margin: 5px;
+}
+.weather-status
+{
+    font-size: 12px;
+    .weather-icon-status {
+        text-align: center;
+        margin-bottom: 6px;
+    }
+}
+.mat-menu-panel.weather-full-wrapper {
+    border-radius: 10px;
+}
+.weather-full-wrapper .results-wrapper .weather-status
+{
+    margin: 0!important;
+    padding: 0 8px;
+}
+.weather-bar:not(:last-child){
+    border-right: 1px solid #ffffff52;
+}
+.mat-menu-panel.weather-full-wrapper .mat-menu-content .results-wrapper {
+    padding: 10px 5px!important;
+}
+
+span.mat-slide-toggle-label.mat-slide-toggle-content.temp-custom {
+    display: inline;
+    margin-right: 7px;
+}
+
+.weather-address{
+    background: #000;
+}
+.mat-form-field {
+    display: block;
+}
+
+.weather-top-status {
+    font-size: 25px;
+    padding: 5px 0;
+
+    .icon-button {
+        display: inline;
+        padding-right: 10px;
+    }
+}
+.weather-info {
+    justify-content: space-around;
+    margin-bottom: 0;
+
+    .weather-icon {
+        font-size: 40px;
+    }
+
+    .temp {
+        font-size: 30px;
+    }
+
+    .weather-status {
+        font-size: 16px;
+    }
+
+    .other-info {
+        font-size: 14px;
+    }
+}
+.weather-location {
+    padding: 0 10px;
+    //font-size: 18px;
+    //margin: 8px 0;
+    position: relative;
+
+    mat-form-field {
+        width: 180px;
+    }
+
+    /*::ng-deep.mat-form-field {
+        margin: 0;
+        .mat-form-field-wrapper {
+            padding-bottom: 0;
+        }
+    }*/
+
+    .weather-location_save, .weather-location_edit {
+        position: absolute;
+        top: 2px;
+        right: -30px;
+    }
+
+    .weather-location_target {
+        position: absolute;
+        top: 7px;
+        right: -55px;
+    }
+
+    .weather-location_save:hover, .weather-location_edit:hover, .weather-location_target:hover {
+        cursor: pointer;
+    }
+
+    /*&:hover mat-icon {
+        display: flex!important;
+    }
+
+    mat-icon {
+        position: absolute;
+        right: 0;
+        top: 5px;
+        font-size: 13px;
+        cursor: pointer;
+
+        &.edit {
+            display: none;
+        }
+    }
+
+    ::ng-deep.mat-form-field {
+        margin: 0;
+        margin-left: 3px;
+        .mat-form-field-wrapper {
+            padding-bottom: 0;
+            .mat-form-field-infix {
+                border: 0;
+                input {
+                    color: white !important;
+                }
+            }
+            .mat-form-field-underline {
+                display: none;
+                bottom: 0;
+            }
+        }
+    }
+
+    ::ng-deep.mat-form-field.editing {
+        .mat-form-field-underline {
+            display: block;
+        }
+    }*/
+
+}
+
+app-widget-icon {
+    .icon-status {
+        top: -6px;
+        position: absolute;
+    }
+    .icon-temp {
+        position: absolute;
+        top: 25px;
+        font-size: 12px;
+    }
+}

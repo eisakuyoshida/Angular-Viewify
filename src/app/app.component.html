@@ -1,0 +1,11 @@
+<div class="background" [@loading]="bgImgLoaded ? 'loads' : 'loaded'"></div>
+
+<ng-container *ngIf="!isLoading">
+    <app-startup (usernameChange)="onUsernameChange()" *ngIf="!(hasUserName | async)"></app-startup>
+</ng-container>
+
+<div [@loading]="isLoading ? 'loaded' : 'loads'" id="main-content">
+    <ng-container *ngIf="hasUserName | async">
+        <app-desk></app-desk>
+    </ng-container>
+</div>

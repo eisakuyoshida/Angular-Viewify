@@ -1,0 +1,56 @@
+.whatsapp_full-wrapper {
+  position: relative;
+  min-height: 400px;
+  width: 100%;
+
+
+
+  .whatsapp_iframe-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+
+      .whatsapp_width-toggle {
+          position: absolute;
+          font-size: 35px;
+          z-index: 55;
+          left: -30px;
+          top: 40%;
+          padding: 4px 19px;
+          border-radius: 100%;
+          background-color: rgba(0, 0, 0, .3);
+
+          .whatsapp_arrow {
+              position: relative;
+              right: -14px;
+          }
+
+
+      }
+
+      .whatsapp_width-toggle:hover {
+          background-color: rgba(0, 0, 0, .5);
+          cursor: pointer;
+      }
+
+      iframe {
+          border: 0;
+          height: 100%;
+          width: 100%;
+      }
+  }
+}
+
+/*._2U_Zc {
+    min-width: unset;
+}*/
+
+/*.page-version {
+
+    #window {
+        .window-body {
+            height: 400px !important;
+        }
+    }
+}*/

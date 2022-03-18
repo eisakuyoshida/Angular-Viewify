@@ -1,0 +1,251 @@
+.app-desk {
+    display: flex;
+    position: relative;
+    z-index: 10;
+    flex-direction: column;
+    height: 100%;
+
+    .app-desk_header {
+        width: 100%;
+        display: flex;
+        margin-top: -3px;
+        padding: 8px 3.5vw !important;
+        box-sizing: border-box;
+
+        .app-desk_page-menu-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+        .app-desk_page-menu {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 500px;
+            background-color: green;
+            .app-desk_test1, .app-desk_test2, .app-desk_test3 {
+                width: 100%;
+                height: 30%;
+            }
+        }
+
+
+        .app-desk_search {
+            width: 25%;
+            padding-left: .5vw;
+            padding-right: .5vw;
+        }
+        .app-desk_links {
+            width: 50%;
+            padding-left: .5vw;
+            padding-right: .5vw;
+        }
+        .app-desk_menu {
+            display: flex;
+            padding-left: .5vw;
+            justify-content: center;
+            width: 25%;
+
+            .main-menu_button {
+                min-width: 15px;
+                max-width: 25px;
+                margin-right: .5vw;
+            }
+        }
+    }
+
+    .mat-button {
+        min-width: 25px;
+        width: 25px;
+        padding: 0;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .mat-button:focus,
+    button:focus {
+        background-color: transparent !important;
+        outline: unset !important;
+    }
+
+    .search-bar {
+        position: relative;
+        width: 100%;
+        .selected-menu {
+            float: right;
+            position: relative;
+            top: 0;
+            right: 10px;
+
+            mat-icon {
+                display: unset;
+                &:after {
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    margin-left: .2em;
+                    vertical-align: .7em;
+                    content: "";
+                    border-top: .15em solid;
+                    border-right: .15em solid transparent;
+                    border-bottom: 0;
+                    border-left: .15em solid transparent;
+                }
+            }
+        }
+    }
+
+    .add-widget-button {
+        cursor: pointer;
+        font-size: 20px;
+        opacity: .6;
+        transition: 160ms linear;
+        margin-right: 0;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .popover {
+        border-radius: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 8px 16px;
+        position: relative;
+        z-index: 10;
+        background-color: transparent;
+        border-bottom: unset;
+
+        .flex-spacer {
+            flex: 1;
+        }
+
+        .search-menus {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+
+    ::ng-deep.mat-tab-group {
+        height: 100%;
+
+
+        .mat-tab-header {
+            display: none;
+        }
+
+        .mat-tab-body-wrapper {
+            height: 100%;
+        }
+
+        .main-container {
+            height: 100%;
+            background-color: transparent;
+
+            .mat-drawer {
+                background-color: transparent;
+                display: flex;
+                align-items: center;
+
+                .change-view-button {
+                    height: 100%;
+                    width: 3vw;
+                    text-align: center;
+                    //min-width: 40px;
+                    padding: .5vw;
+                    font-size: 28px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .desk-content {
+        height: 100%;
+        overflow: hidden;
+
+        &.has-left-arrow {
+            margin-left: 3vw;
+        }
+
+        &.has-right-arrow {
+            margin-right: 3vw;
+        }
+    }
+
+    .img-list_button {
+        background-image: url(https://1.bp.blogspot.com/-UUXaK5GCj-k/UcsKJRMgkVI/AAAAAAAACfM/sePP_H08JTQ/s1600/1.jpg);
+        background-size: 250%;
+        background-position-x: 0;
+        background-repeat: repeat-x;
+        display: inline-block;
+        border-radius: 100%;
+        height: 25px;
+        z-index: 9999;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        .img-list_arrow {
+            position: relative;
+            bottom: -12px;
+            left: -10px;
+        }
+    }
+
+    .img-list_button:hover {
+        cursor: pointer;
+    }
+}
+
+mat-toolbar.popover {
+    overflow: visible;
+}
+
+.bg-img_info {
+    //transform: translateX(-50%);
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 3vw;
+    bottom: 12px;
+    height: 40px;
+    width: 23.2vw;
+    white-space: nowrap;
+    //overflow: hidden;
+    text-decoration: none;
+    z-index: 9999;
+    color: #fff;
+
+    .bg-img_title, .bg-img_owner {
+        line-height: 17px;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        text-align: right;
+        overflow: hidden;
+        white-space: normal;
+        transition: visibility 0.1s, opacity 0.8s, top 0.2s, bottom 0.2s linear;
+    }
+
+    .bg-img_title {
+        top: 0;
+    }
+
+    .bg-img_owner {
+        opacity: 0;
+        bottom: 0;
+    }
+}
+
+.bg-img_info:hover {
+    cursor: pointer;
+    text-decoration: none;
+    .bg-img_title {
+        top: 15px;
+    }
+    .bg-img_owner {
+        bottom: 25px;
+        opacity: 1;
+    }
+}

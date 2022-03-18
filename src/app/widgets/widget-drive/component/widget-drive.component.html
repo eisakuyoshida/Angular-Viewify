@@ -1,0 +1,52 @@
+<app-widget
+    [type]="type"
+    [frozen]="frozen"
+    [hide]="hide"
+    [remove]="remove"
+    [minimizedSubj]="minimizedOnStart"
+    (minimizedEmiter)="onMinimize($event)"
+    [opened]="onOpened()"
+    [showHeader]="driveService.settings.showHeader"
+    [headerName]="driveService.settings.headerName"
+    (reload)="reload()"
+    (hideWidget)="hideWidget.emit()"
+    (save)="saveSettings()">
+
+    <app-widget-icon>
+        <mat-icon fontSet="fab" fontIcon="fa-google-drive"></mat-icon>
+    </app-widget-icon>
+
+    <app-widget-settings>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Header</span>
+            <mat-slide-toggle [(ngModel)]="driveService.settingShowHeader"></mat-slide-toggle>
+        </div>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Name</span>
+            <mat-form-field>
+                <input matInput [(ngModel)]="driveService.settingHeaderName"
+                       autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>
+    </app-widget-settings>
+    <app-widget-full>
+        <div class="drive_full-wrapper full-wrapper">
+            <div class="drive_iframe_wrapper" *ngIf="files.length">
+                <a *ngFor="let file of files" class="file"  href="{{file.link}}">
+                    <div class="icon" *ngIf="file.icon" [ngStyle]="{'background-image':  'url(' + file.icon + ')'}" ></div>
+                    <div class="icon" *ngIf="!file.icon" ></div>
+                    <div class="info">
+                        <h2 class="name">{{file.name}}</h2>
+                        <div class="modified">{{file.modified}}</div>
+                    </div>
+                </a>
+            </div>
+            <div *ngIf="!files.length" class="drive_iframe_wrapper">
+                <div class="authorize">
+                    You'll need to give iChrome permission to view your Google Now cards before anything will show up here.
+                    <button type="button" class="btn btn-primary btn-authorize" (click)="authClick()">{{strBtnCaption}}</button>
+                </div>
+            </div>
+        </div>
+    </app-widget-full>
+</app-widget>

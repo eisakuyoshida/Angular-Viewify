@@ -1,0 +1,101 @@
+<app-widget
+    [type]="type"
+    [frozen]="frozen"
+    [hide]="hide"
+    [remove]="remove"
+    [minimizedSubj]="minimizedOnStart"
+    (minimizedEmiter)="onMinimize($event)"
+    [opened]="onOpened()"
+    [showHeader]="weatherService.settings.showHeader"
+    [headerName]="weatherService.settings.headerName"
+    (reload)="reload()"
+    (hideWidget)="hideWidget.emit()"
+    (save)="saveSettings()">
+
+    <app-widget-icon>
+        <span [innerHTML]="weatherService.weatherIcon()" title="{{weatherService.settings.currentStatus}}" class="icon-status icon icon-button"></span>
+        <div class="icon-temp">{{weatherService.settings.currentTemperature || '-'}}°</div>
+    </app-widget-icon>
+
+    <!--<app-widget-settings-on-adding [settings]="weatherService.settings" (syncSettings)="syncSettingsStorage()">
+    </app-widget-settings-on-adding>-->
+
+    <app-widget-settings>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Header</span>
+            <mat-slide-toggle [(ngModel)]="weatherService.settingShowHeader"></mat-slide-toggle>
+        </div>
+        <div class="setting-item">
+            <span class="setting-item-label">Widget Name</span>
+            <mat-form-field>
+                <input matInput [(ngModel)]="weatherService.settingHeaderName"
+                       autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>
+    </app-widget-settings>
+
+    <app-widget-full>
+        <div class="weather-full-wrapper">
+
+            <div class="weather-location">
+                <mat-form-field [class.editing]="isEditingLocation">
+                    <input matInput [(ngModel)]="locationInputData" placeholder="{{weatherService.settings.ManualAddress}}" (keyup)="keyUpLocation()"
+                        value="{{locationInputData}}" [matAutocomplete]="auto" [disabled]="!isEditingLocation"
+                        autocomplete="off" spellcheck="false">
+                    <mat-icon class="weather-location_edit" (click)="editLocation()" *ngIf="!isEditingLocation" fontSet="fas" fontIcon="fa-pen"></mat-icon>
+                    <mat-icon class="weather-location_save" (click)="saveLocation()" *ngIf="isEditingLocation" fontSet="fas" fontIcon="fa-check"></mat-icon>
+                    <i class="fas fa-crosshairs weather-location_target" (click)="getMyLocation()"
+                       *ngIf="isEditingLocation" title="Detect my location"></i>
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let location of locationOptions" [value]="location.city" (click)="changeLocation(location.city)">{{location.qualifiedName}}</mat-option>
+                </mat-autocomplete>
+            </div>
+
+            <div class="weather-info flex-center">
+                <div class="weather-icon">
+                    <span [innerHTML]="weatherService.weatherIcon()" title="{{weatherService.settings.currentStatus}}"></span>
+                </div>
+                <div class="center">
+                    <span class="temp">{{weatherService.settings.currentTemperature}}°</span><br>
+                    <span class="weather-status">{{weatherService.settings.currentStatus}}</span>
+                </div>
+                <div class="other-info">
+                    <span *ngIf="weatherService.settings.currentWind && weatherService.settings.currentUnit">
+                        Wind: {{weatherService.settings.currentWind.speed}}{{weatherService.settings.currentUnit.speed}}
+                    </span><br>
+                    <span *ngIf="weatherService.settings.currentAtmosphere">Perc: {{weatherService.settings.currentAtmosphere.humidity}}%</span>
+                </div>
+            </div>
+            <div class="results-wrapper flex-center" (click)="$event.stopPropagation()">
+                <div class="weather-status weather-bar" *ngFor="let weather of weatherService.settings.WeatherDatas.slice(1).slice(0, 5)">
+                    <div class="weather-icon-status">
+                        <span [innerHTML]="weatherService.weatherIcon(weather.conditionCode.toString())" title="{{weather.condition}}"></span>
+                    </div>
+                    <div>
+                        <span> {{weather.high}}°</span>
+                        <span class="low-temp"> {{weather.low}}°</span>
+                    </div>
+                    <div class="day">{{weather.day}}</div>
+                </div>
+            </div>
+        </div>
+    </app-widget-full>
+    <app-widget-settings>
+        <div class="setting-item">
+            <mat-slide-toggle (change)="onLocationSettingsChange($event)" [checked]="weatherService.settings.FindAutoAddress">
+                Find location automatically
+            </mat-slide-toggle>
+        </div>
+        <div class="toggle-temp setting-item" (click)="$event.stopPropagation()">
+            <span class="mat-slide-toggle-label mat-slide-toggle-content temp-custom">°C</span>
+            <mat-slide-toggle (change)="onChangeTempUnit($event)" [checked]="weatherService.isFahrenheit">°F</mat-slide-toggle>
+        </div>
+        <!--<div class="setting-item" [hidden]="weatherService.settings.FindAutoAddress">
+            <mat-form-field>
+                <input matInput placeholder="Enter location name/zip code" [(ngModel)]="" (keyup)="weatherService.updateUserSettingsAddress()"
+                    autocomplete="off" spellcheck="false">
+            </mat-form-field>
+        </div>-->
+    </app-widget-settings>
+</app-widget>

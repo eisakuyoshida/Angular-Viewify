@@ -1,0 +1,41 @@
+<div class="icon-view">
+    <mat-drawer-container class="main-container">
+        <mat-drawer mode="side" opened position="start" class="test">
+            <div class="left-widgets" #widgetsBar>
+                <app-draggable-icons
+                    [widgets]="widgets"
+                    [hideOpenedWidgets]="hideOpenedWidgets"
+                    [widgetAddingDragStart]="widgetAddingDragStart"
+                    [widgetAddingDragEnd]="widgetAddingDragEnd"
+                    (widgetAddingCompleted)="closeDialog()"></app-draggable-icons>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="no-overflow">
+            <app-draggable-icons
+                position="bottom"
+                [widgets]="widgets"
+                [hideOpenedWidgets]="hideOpenedWidgets"
+                [widgetAddingDragStart]="widgetAddingDragStart"
+                [widgetAddingDragEnd]="widgetAddingDragEnd"
+                (widgetAddingCompleted)="closeDialog()"></app-draggable-icons>
+            <app-quote></app-quote>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+
+<ng-template #addWidgetModal class="popover" panelClass="popover">
+    <app-widgets-add-popup
+        *ngIf="availableWidgets"
+        [widgets]="availableWidgets"
+        (dragStart)="onDragStart($event)"
+        (dragEnd)="onDragEnd($event)"
+    ></app-widgets-add-popup>
+</ng-template>
+
+<ng-template #bookmarksModal>
+
+</ng-template>
+
+<ng-template #historyModal>
+
+</ng-template>

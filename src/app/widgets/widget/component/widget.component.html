@@ -1,0 +1,67 @@
+<div [ngSwitch]="type" class="app-widget-cpm">
+    <ng-container *ngSwitchCase="'icon'">
+        <ng-container *ngTemplateOutlet="icon"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'full'">
+        <ng-container *ngTemplateOutlet="full"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'on-adding'">
+        <ng-container *ngTemplateOutlet="full"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'settings'">
+        <ng-container *ngTemplateOutlet="settings"></ng-container>
+    </ng-container>
+</div>
+
+<ng-template #icon>
+    <div class="widget-icon-wrapper" [ngClass]="{'active': matDialogRef}" mat-button (click)="iconClick()">
+        <ng-content select="app-widget-icon"></ng-content>
+    </div>
+</ng-template>
+
+<ng-template #full>
+    <div class="app-widget-full-wrapper">
+        <div class="app-widget-full-content" (click)="$event.stopPropagation()">
+            <div class="widget-header" *ngIf="showHeader && type !== 'on-adding'">
+                <div class="header-text">{{ headerName }} <span *ngIf="openSettings" class="settings_label">Settings</span></div>
+            </div>
+            
+            <div class="actions-icons" *ngIf="showHeader && type !== 'on-adding'">
+                <i *ngIf="openSettings" class="far fa-save widget-settings_icon settings_label" title="save" (click)="saveSettings()"></i>
+                <i *ngIf="!openSettings" class="fas fa-sync-alt widget-settings_icon" title="reload" (click)="reload.emit()"></i>
+                <i class="fas fa-cog widget-settings_icon" title="settings" (click)="onOpenSettings()"></i>
+                <i *ngIf="type == 'full'" class="fas fa-window-minimize widget-settings_icon" title="minimize" (click)="minimizeWidget($event.target)"></i>
+                <i *ngIf="type == 'full'" class="fas fa-trash-alt widget-settings_icon" title="remove" (click)="askForDelete()"></i>
+                <i *ngIf="type == 'icon'" class="fas fa-times widget-settings_icon" title="close" (click)="closeWidget()"></i>
+            </div>
+            <ng-content *ngIf="type === 'on-adding' && !minimizedOnStart && !openDeleteWindow" select="app-widget-settings-on-adding"></ng-content>
+            <ng-content select="app-widget-full" *ngIf="openFullWindow && !openSettings && !minimizedOnStart && !openDeleteWindow"></ng-content>
+            <ng-container *ngIf="openSettings && !minimizedOnStart && !openDeleteWindow">
+                <ng-container *ngTemplateOutlet="settings"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="openDeleteWindow">
+                <ng-container *ngTemplateOutlet="deleteWidget"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #settings>
+    <div class="app-widget-settings-wrapper">
+        <div class="widget-settings-top-header">
+        </div>
+        <div class="app-widget-settings-content">
+            <ng-content select="app-widget-settings"></ng-content>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #deleteWidget>
+    <div class="delete-widget_wrapper">
+        <p [ngClass]="{'header-space': !showHeader, 'delete-widget_title': true}">Are you sure you want to remove {{headerName}} Widget?</p>
+        <div class="delete-widget_buttons">
+            <button mat-stroked-button type="button" (click)="onHideWidget()">Yes</button>
+            <button mat-stroked-button type="button" (click)="declineDelete()">No</button>
+        </div>
+    </div>
+</ng-template>

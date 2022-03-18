@@ -1,0 +1,44 @@
+@mixin scrollbarStyles {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #e9e9e9;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #8e8e8e;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #727272;
+    }
+    /*&::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #999999;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #555555;
+        border-radius: 10px;
+    }*/
+}
+
+$title_color: #fff;
+$content_color: #898989;
+$border-bottom-color: rgba(255, 255, 255, 0.5);
+
+$title_font-size: 12px;
+$content_font-size: 10px;
+
+.events_spinner {
+    margin: 40px auto;
+}
